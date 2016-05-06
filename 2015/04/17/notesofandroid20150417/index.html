@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Android的笔记积累(六) | Dream Maker</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="关于Android开发过程中的点点滴滴">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Android的笔记积累(六) | Dream Maker">
+    <meta name="twitter:description" content="关于Android开发过程中的点点滴滴">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Android的笔记积累(六) | Dream Maker">
+    <meta property="og:description" content="关于Android开发过程中的点点滴滴">
+
+    
+    <meta name="author" content="kikujiang">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://kikujiang.github.io/2015/04/17/notesofandroid20150417/"/>
+
+    
+    <link rel="author" href="https://plus.google.com/u/0/"/>
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Dream Maker 的主页"><img src="/images/logo2.jpg" width="80" alt="Dream Maker logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Dream Maker">Dream Maker</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">因上努力，果上随缘</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">热爱自然，喜欢动物，渴望旅行，积攒幸福的宅男</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+            
+              <li class="navigation__item"><a href="/archives">Archives</a></li>
+            
+              <li class="navigation__item"><a href="/reading">reading</a></li>
+            
+              <li class="navigation__item"><a href="/blogs">blogs</a></li>
+            
+              <li class="navigation__item"><a href="/about">about</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/wb981933877?wvr=5&amp;is_all=1" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/kikujiang" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+  <li class="navigation__item">
+    <a href="https://plus.google.com/u/0/" title="Google+" target="_blank">
+      <i class='social fa fa-google-plus-square'></i>
+      <span class="label">Google+</span>
+    </a>
+  </li>
+
+
+<!-- Facebook -->
+
+  <li class="navigation__item">
+    <a href="https://www.facebook.com/wu.pow.5" title="上Facebook找我" target="_blank">
+      <i class='social fa fa-facebook'></i>
+      <span class="label">Facebook</span>
+    </a>
+  </li>
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-04-17T02:16:33.000Z" class="post-list__meta--date date">2015-04-17</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Notes/">Notes</a>
+</span>
+    </div>
+    <h1 class="post-title">Android的笔记积累(六)</h1>
+  </header>
+
+  <section class="post">
+    <p>#前言<br>最近没啥事，准备好好一下补充自己的基础。因为一些工具以及一些功能了解是了解，但是如果深究的话，自己才发现懂得甚至连皮毛都算不上。准备先从View开始一步一步慢慢深入，期间自己也做一些总结和尝试。</p>
+<h1 id="关于Android中的onkeydown-方法的知识"><a href="#关于Android中的onkeydown-方法的知识" class="headerlink" title="关于Android中的onkeydown()方法的知识"></a>关于Android中的onkeydown()方法的知识</h1><p>昨天晚些的时候，因为想起来之前做的按两次退出app的简单功能。昨天在<code>onkeydown()</code>方法里面，发现不起作用了。先看原来成功运行的代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchKeyEvent</span><span class="params">(KeyEvent event)</span> </span>&#123;</span><br><span class="line">     Log.d(TAG, <span class="string">"dispatchKeyEvent method is invoked--------------------------start "</span>);</span><br><span class="line">    <span class="keyword">if</span>(event.getAction() == KeyEvent.ACTION_DOWN &amp;&amp; event.getKeyCode() == KeyEvent.KEYCODE_BACK)&#123;</span><br><span class="line">    <span class="keyword">if</span> ((System.currentTimeMillis() - lastTime) &gt; <span class="number">2000</span>) &#123;</span><br><span class="line">    lastTime = System.currentTimeMillis();</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>,<span class="string">"再按一次退出程序"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    finish();</span><br><span class="line">    System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Log.d(TAG, <span class="string">"dispatchKeyEvent method is invoked--------------------------end "</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.dispatchKeyEvent(event);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>dispatchKeyEvent()</code>方法中这样写是可以实现两次退出程序的功能。菜主自己重写的时候也没在意，就把这个方法写到<code>onkeydown()</code>方法中去了，结果令菜主有点小意外，居然按一次返回键就返回了。网上搜一些相关的资料，未果。所以追本溯源，去官方文档上去看看。</p>
+<p>##dispatchKeyEvent()<br>官方说明我们可以在其他点击事件被分发到窗口前，通过重写该方法来阻截所有的点击事件，返回true的时候表示已被处理。菜主的理解就是有点向触摸事件中的<code>dispatchTouchEvent()</code>方法一样，如果在这一步就把逻辑写好了，那么接下来就不在进行其他的处理了。菜主比较笨，就打了个log看了下:<br><img src="http://powinandroid.qiniudn.com/log_dispatchevent.jpg?imageView2/1/q/85|watermark/2/text/cG93aW5hbmRyb2lk/font/5a6L5L2T/fontsize/500/fill/I0VGRUZFRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""><br>菜主发现，果然和文档说的一样，开始和结束都执行了<code>dispatchTouchEvent()</code>方法。</p>
+<p>##onkeydown()<br>官方文档对该方法的解释是，如果activity中的view有自己的<code>onkeydown()</code>方法，那么就不会调用我们写在activity中的方法。只有都是默认的，才会调用此方法。这里菜主上面方法中的代码移到<code>onkeydown()</code>事件中去，也打出log进行观察了一番，如图所示:<img src="http://powinandroid.qiniudn.com/log_onkeydown_log.jpg?imageView2/1/q/85|watermark/2/text/cG93aW5hbmRyb2lk/font/5a6L5L2T/fontsize/500/fill/I0VGRUZFRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""><br>我们发现第二次退出的时候直接调用<code>onkeydown()</code>就退出了，并没有再继续执行<code>dispatchTouchEvent()</code>中的方法。</p>
+<p>##总结和分析<br>菜主把代码又重新运行了一遍，发现问题神奇的没有了。菜主被玩的稀里糊涂的，没办法，逼着自己看源码咯。这边先记一下这个问题。</p>
+<hr>
+<p>#参考资料：<br>这里的资料关于一些事件传递的解释还有我看的关于<code>onkeydown()</code>之类方法的一个解释</p>
+<blockquote>
+<p> <a href="http://stackoverflow.com/questions/7846050/difference-between-onkey-onkeydown-and-dispatchkeyevent-methods-provided" target="_blank" rel="external">difference between onkey onkeydown and dispatchkeyevent methods</a>(在著名问答网站上的一个回答，简洁的说明了onkey(),onkeydown()以及dispatchkeyevent()的简单流程)</p>
+<p><a href="http://blog.csdn.net/cwuhao/article/details/6891220" target="_blank" rel="external"> 关于Android按键处理</a>(这篇文章中也没讲多细，只是用代码演示一遍事件分发的一个工程)  </p>
+<p><a href="http://developer.android.com/reference/android/app/Activity.html" target="_blank" rel="external">http://developer.android.com/reference/android/app/Activity.html</a>(官方文档对于Activity的简介，其中包括对<code>dispatchKeyEvent()</code>和<code>onkeydown()</code>这两个方法的解释)</p>
+<p><a href="http://wugengxin.cn/download/pdf/android/PRE_andevcon_mastering-the-android-touch-system.pdf" target="_blank" rel="external">Mastering the Android</a>(这个pdf简单介绍了android系统中事件分发的一些过程和原理)</p>
+<p><a href="http://www.codekk.com/open-source-project-analysis/detail/Android/Trinea/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8BView%20%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92" title="codekk源码解析" target="_blank" rel="external">View 事件传递</a>(这个是众所周知的Trinea大神源码解析网站上的一篇文章，虽然内容不多)</p>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/9097463" title="事件分发系列" target="_blank" rel="external">Android事件分发机制完全解析，带你从源码的角度彻底理解(上)</a>(这偏文章是一直关注的郭神出的一个系列，从源码角度对事件分发机制的解析)</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-55690406-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>

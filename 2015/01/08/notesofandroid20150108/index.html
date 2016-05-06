@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Dream Maker | 因上努力，果上随缘</title>
+    <title>Android的笔记积累(四) | Dream Maker</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,15 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="热爱自然，喜欢动物，渴望旅行，积攒幸福的宅男">
+    <meta name="description" content="关于Android开发过程中的点点滴滴">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Dream Maker | 因上努力，果上随缘">
-    <meta name="twitter:description" content="热爱自然，喜欢动物，渴望旅行，积攒幸福的宅男">
+    <meta name="twitter:title" content="Android的笔记积累(四) | Dream Maker">
+    <meta name="twitter:description" content="关于Android开发过程中的点点滴滴">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Dream Maker | 因上努力，果上随缘">
-    <meta property="og:description" content="热爱自然，喜欢动物，渴望旅行，积攒幸福的宅男">
+    <meta property="og:title" content="Android的笔记积累(四) | Dream Maker">
+    <meta property="og:description" content="关于Android开发过程中的点点滴滴">
 
     
     <meta name="author" content="kikujiang">
@@ -35,7 +35,7 @@
     <meta name="generator" content="hexo"/>
     
 
-    <link rel="canonical" href="http://kikujiang.github.io/about/index.html"/>
+    <link rel="canonical" href="http://kikujiang.github.io/2015/01/08/notesofandroid20150108/"/>
 
     
     <link rel="author" href="https://plus.google.com/u/0/"/>
@@ -152,48 +152,30 @@
             <article class="post-container post-container--single">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <div class="post-meta">
+      <time datetime="2015-01-08T08:12:35.000Z" class="post-list__meta--date date">2015-01-08</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Notes/">Notes</a>
+</span>
+    </div>
+    <h1 class="post-title">Android的笔记积累(四)</h1>
   </header>
 
   <section class="post">
-    <h2 id="个人短介"><a href="#个人短介" class="headerlink" title="个人短介"></a>个人短介</h2><ul>
-<li>英文名：<strong>Paul Wu</strong></li>
-<li>绰号：<strong>流风而逝、powinandroid</strong></li>
-<li>类型：<strong>水瓶座全能型码农</strong></li>
-<li>爱好：<strong>旅游、游戏测试员、动脑子、逍遥自在</strong></li>
-</ul>
-<h2 id="个人经历"><a href="#个人经历" class="headerlink" title="个人经历"></a>个人经历</h2><blockquote>
-<p>2015.06 ——– 至今</p>
+    <h2 id="前言"><a href="#前言" class="headerlink" title="#前言"></a>#前言</h2><p>大家好，菜主又回来了。经历了2014的洗礼，2015又匆匆而来。你是否也准备好迎接这变化多端的2015呢？新的一年，菜主发现这段时间的求知欲比较旺盛，做事也肯下功夫了，这真是个很不错的征兆呢。言归正传，这周就是春运活动结束。本来一些素材都准备的差不多了。这周直接就是向<a href="http://my.csdn.net/lmj623565791" target="_blank" rel="external">鸿洋大神</a>学习一些自定义控件的效果了。说实话，这周的收获还是很大的。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="#正文"></a>#正文</h2><blockquote>
+<p>首先先说工作上的东西吧，这周虽然求知欲比较旺盛，但是伴随的粗心问题也是一大堆的。第一个问题就是当webview和js进行交互的时候，在重写<strong><em>onJsConfirm()</em></strong>这个方法的时候属性时我们需要注意几点:</p>
 <blockquote>
-<p><a href="http://www.woniu.com/" target="_blank" rel="external">游戏蜗牛</a>   </p>
+<p>1.在重写该方法时，要注意默认的返回值为false，表示confirm弹框不需要客户端来处理，返回值为true的时候，表示弹框完全由客户端来处理;</p>
+<p>2.需要在处理完成之后将result对象返回给js，否则的话就会导致该页面直接没反应。</p>
 </blockquote>
-<p>2014.04 ——– 2015.06</p>
-<blockquote>
-<p><a href="http://www.ttschina.com.cn/" target="_blank" rel="external">南京特捷交通技术系统有限公司</a>    </p>
+<p>其次就是关于浏览器调用app的问题，菜主花了大半天。其实就是那几行配置文件的代码:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"m"</span> <span class="attr">android:host</span>=<span class="string">"a.m "</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>代码就短短数行。菜主之所以不成功的原因就是因为头昏加马虎。容菜主慢慢道来,因为一开始用两个程序在测试，一个是自己写的webview嵌套的demo，另外一个就是我们的程序。因为上面这个在webview中不能跳入相关的app，菜主一开始也注意到了。但是因为下午头脑发热，把两个app搞混了，在一个中改了，却在另一个中运行，导致运行结果一直不成功。去官网也好好看了一番。而且还有一点就是，菜主犯了个愚蠢的错误，直接在浏览器中进行输入，因为浏览器中对输入的内容进行了加工，这也是导致没有成功的原因之一。虽然折腾了很久，但是菜主也着实学习了一番。</p>
+<p>接下来就是上面说的侧滑效果了。给出<a href="http://www.imooc.com/learn/211" target="_blank" rel="external">教程地址</a>。大家没事的时候也可以去慕课网上看看其他视频。其实内容不是特别的难，但是菜主从头到尾体验之后。对一些基本的用法还是掌握了不少。具体的等菜主好好整理一番。</p>
 </blockquote>
-<p>2012.12 ——– 2014.04</p>
-<blockquote>
-<p><a href="http://www.sumecom.com/" target="_blank" rel="external">商高电子科技（上海）有限公司</a></p>
-</blockquote>
-<p>2012.05 ——– 2012.10</p>
-<blockquote>
-<p><a href="http://www.cssnj.com.cn/cms/main/index.html" target="_blank" rel="external">南京中软软件与技术服务有限公司</a></p>
-</blockquote>
-<p>2011.10 ——– 2012.04</p>
-<blockquote>
-<p><a href="http://www.houxue.com/xuexiao/56991/" target="_blank" rel="external">无锡中软</a></p>
-</blockquote>
-<p><em>（Ps：出来工作之前实在无锡中软这家机构，在里面进行了半年的培训，之后把毕业设计做完就直接工作了，之后的公司均作为Android工程师一职）</em></p>
-</blockquote>
-<h2 id="个人交流"><a href="#个人交流" class="headerlink" title="个人交流"></a>个人交流</h2><blockquote>
-<p>邮箱：<strong>1014637386@qq.com</strong><br><br>站点：<a href="http://kikujiang.github.io/">http://kikujiang.github.io/</a><br></p>
-</blockquote>
-<h2 id="微信二维码"><a href="#微信二维码" class="headerlink" title="微信二维码"></a>微信二维码</h2><blockquote>
-<p><img src="http://7pulyj.com1.z0.glb.clouddn.com/weixin_icon_powinandroid.jpg?imageView2/1/q/85|watermark/2/text/cG93aW5hbmRyb2lk/font/5a6L5L2T/fontsize/300/fill/IzFDMTcxNw==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-</blockquote>
-<h2 id="个人座右铭"><a href="#个人座右铭" class="headerlink" title="个人座右铭"></a>个人座右铭</h2><p> 热爱生活，热爱编程，热爱运动</p><br><p> 尽可能的多学一点，生活会更加有趣。</p><br><p> 没有好的身体，一切都是虚的。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="#结尾"></a>#结尾</h2><p>新的一年，有很多的事情要去做，无论是工作上，还是生活中。菜主在努力的同时要好好感谢小菜婆。这几周，除了工作上，也争取好好把自定义view学习学习。</p>
 
   </section>
+
 </article>
 
 
