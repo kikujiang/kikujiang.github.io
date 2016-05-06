@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Kikujiang&#39;s Zone</title>
-  <subtitle>走过的路是最好的回忆</subtitle>
+  <title>听风的三皮</title>
+  <subtitle>因上努力，果上随缘</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://kikujiang.github.io/"/>
   <updated>2016-05-05T15:17:25.803Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://kikujiang.github.io/</id>
   
   <author>
     <name>sir</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2016/05/05/hello-world/"/>
-    <id>http://yoursite.com/2016/05/05/hello-world/</id>
+    <link href="http://kikujiang.github.io/2016/05/05/hello-world/"/>
+    <id>http://kikujiang.github.io/2016/05/05/hello-world/</id>
     <published>2016-05-05T15:17:25.795Z</published>
     <updated>2016-05-05T15:17:25.803Z</updated>
     
