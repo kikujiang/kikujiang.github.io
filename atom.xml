@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>听风的三皮</title>
+  <title>Dream Maker</title>
   <subtitle>因上努力，果上随缘</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>http://kikujiang.github.io/</id>
   
   <author>
-    <name>sir</name>
+    <name>kikujiang</name>
     
   </author>
   
