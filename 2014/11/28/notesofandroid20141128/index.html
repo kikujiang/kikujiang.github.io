@@ -69,13 +69,9 @@
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
             
-              <li class="navigation__item"><a href="/archives">Archives</a></li>
+              <li class="navigation__item"><a href="/archives">Blogs</a></li>
             
-              <li class="navigation__item"><a href="/categories">blogs</a></li>
-            
-              <li class="navigation__item"><a href="/about">about</a></li>
-            
-              <li class="navigation__item"><a href="/tags">tags</a></li>
+              <li class="navigation__item"><a href="/about">About</a></li>
             
             </ul>
           </nav>
@@ -161,9 +157,11 @@
   </header>
 
   <section class="post">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="#前言"></a>#前言</h2><p>大家好，菜主又回来了。这两周项目忙着上线，有点小忙。这两天抽空看了<a href="http://stormzhang.com/" target="_blank" rel="external">stormzhang大神</a>分享的一些文章，也开始慢慢着手进行Android studio这款开发软件的学习。毕竟，好的东西也还是要多多学习的。不说废话了，记录一下这周的遇到一些有帮助的东西。</p>
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>大家好，菜主又回来了。这两周项目忙着上线，有点小忙。这两天抽空看了<a href="http://stormzhang.com/" target="_blank" rel="external">stormzhang大神</a>分享的一些文章，也开始慢慢着手进行Android studio这款开发软件的学习。毕竟，好的东西也还是要多多学习的。不说废话了，记录一下这周的遇到一些有帮助的东西。</p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="#正文"></a>#正文</h2><ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><hr>
+<ul>
 <li>首先先来讲讲看到的一个缓存工具类<strong><em>ASimpleCache</em></strong>,我们一般开发Android程序，对缓存的用到还是很多的。之前项目中确实也用到的是<strong><em>SharePreference</em></strong>。配置的时候确实只是配置了一些基本类型的数据。看了这个开源工具类之后，发现着实很好用。俗话说的好:好记性不如烂笔头，遂将其记录下来。方便以后自己项目中用到，直接集成使用。给个<strong><em>github</em></strong>上面的梯子:<a href="https://github.com/yangfuhai/ASimpleCache" target="_blank" rel="external">ASimpleCache</a></li>
 <li>接下来来讲一下项目中遇到一个dialog中设置返回事件无效的代码。一般来说，我们通常会使用的方法是<strong><em>setCancelable()</em></strong>这个方法。但是我在使用的时候，尝试使用了另外两个方法来代替这个效果，结果确实也是成功，不过感觉代码有点多。菜主使用的是<strong><em>setCanceledOnTouchOutside()</em></strong>这个方法以及重写<strong><em>OnKeyListener</em></strong>这个接口来实现。代码如下:</li>
 </ul>

@@ -69,13 +69,9 @@
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
             
-              <li class="navigation__item"><a href="/archives">Archives</a></li>
+              <li class="navigation__item"><a href="/archives">Blogs</a></li>
             
-              <li class="navigation__item"><a href="/categories">blogs</a></li>
-            
-              <li class="navigation__item"><a href="/about">about</a></li>
-            
-              <li class="navigation__item"><a href="/tags">tags</a></li>
+              <li class="navigation__item"><a href="/about">About</a></li>
             
             </ul>
           </nav>
@@ -161,15 +157,15 @@
   </header>
 
   <section class="post">
-    <p>#前言<br>最近没啥事，准备好好一下补充自己的基础。因为一些工具以及一些功能了解是了解，但是如果深究的话，自己才发现懂得甚至连皮毛都算不上。准备先从View开始一步一步慢慢深入，期间自己也做一些总结和尝试。</p>
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近没啥事，准备好好一下补充自己的基础。因为一些工具以及一些功能了解是了解，但是如果深究的话，自己才发现懂得甚至连皮毛都算不上。准备先从View开始一步一步慢慢深入，期间自己也做一些总结和尝试。</p>
 <h1 id="关于Android中的onkeydown-方法的知识"><a href="#关于Android中的onkeydown-方法的知识" class="headerlink" title="关于Android中的onkeydown()方法的知识"></a>关于Android中的onkeydown()方法的知识</h1><p>昨天晚些的时候，因为想起来之前做的按两次退出app的简单功能。昨天在<code>onkeydown()</code>方法里面，发现不起作用了。先看原来成功运行的代码:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchKeyEvent</span><span class="params">(KeyEvent event)</span> </span>&#123;</span><br><span class="line">     Log.d(TAG, <span class="string">"dispatchKeyEvent method is invoked--------------------------start "</span>);</span><br><span class="line">    <span class="keyword">if</span>(event.getAction() == KeyEvent.ACTION_DOWN &amp;&amp; event.getKeyCode() == KeyEvent.KEYCODE_BACK)&#123;</span><br><span class="line">    <span class="keyword">if</span> ((System.currentTimeMillis() - lastTime) &gt; <span class="number">2000</span>) &#123;</span><br><span class="line">    lastTime = System.currentTimeMillis();</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>,<span class="string">"再按一次退出程序"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    finish();</span><br><span class="line">    System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Log.d(TAG, <span class="string">"dispatchKeyEvent method is invoked--------------------------end "</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.dispatchKeyEvent(event);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>在<code>dispatchKeyEvent()</code>方法中这样写是可以实现两次退出程序的功能。菜主自己重写的时候也没在意，就把这个方法写到<code>onkeydown()</code>方法中去了，结果令菜主有点小意外，居然按一次返回键就返回了。网上搜一些相关的资料，未果。所以追本溯源，去官方文档上去看看。</p>
-<p>##dispatchKeyEvent()<br>官方说明我们可以在其他点击事件被分发到窗口前，通过重写该方法来阻截所有的点击事件，返回true的时候表示已被处理。菜主的理解就是有点向触摸事件中的<code>dispatchTouchEvent()</code>方法一样，如果在这一步就把逻辑写好了，那么接下来就不在进行其他的处理了。菜主比较笨，就打了个log看了下:<br><img src="http://powinandroid.qiniudn.com/log_dispatchevent.jpg?imageView2/1/q/85|watermark/2/text/cG93aW5hbmRyb2lk/font/5a6L5L2T/fontsize/500/fill/I0VGRUZFRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""><br>菜主发现，果然和文档说的一样，开始和结束都执行了<code>dispatchTouchEvent()</code>方法。</p>
-<p>##onkeydown()<br>官方文档对该方法的解释是，如果activity中的view有自己的<code>onkeydown()</code>方法，那么就不会调用我们写在activity中的方法。只有都是默认的，才会调用此方法。这里菜主上面方法中的代码移到<code>onkeydown()</code>事件中去，也打出log进行观察了一番，如图所示:<img src="http://powinandroid.qiniudn.com/log_onkeydown_log.jpg?imageView2/1/q/85|watermark/2/text/cG93aW5hbmRyb2lk/font/5a6L5L2T/fontsize/500/fill/I0VGRUZFRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""><br>我们发现第二次退出的时候直接调用<code>onkeydown()</code>就退出了，并没有再继续执行<code>dispatchTouchEvent()</code>中的方法。</p>
-<p>##总结和分析<br>菜主把代码又重新运行了一遍，发现问题神奇的没有了。菜主被玩的稀里糊涂的，没办法，逼着自己看源码咯。这边先记一下这个问题。</p>
+<h2 id="dispatchKeyEvent"><a href="#dispatchKeyEvent" class="headerlink" title="dispatchKeyEvent()"></a>dispatchKeyEvent()</h2><p>官方说明我们可以在其他点击事件被分发到窗口前，通过重写该方法来阻截所有的点击事件，返回true的时候表示已被处理。菜主的理解就是有点向触摸事件中的<code>dispatchTouchEvent()</code>方法一样，如果在这一步就把逻辑写好了，那么接下来就不在进行其他的处理了。菜主比较笨，就打了个log看了下，<br>菜主发现，果然和文档说的一样，开始和结束都执行了<code>dispatchTouchEvent()</code>方法。</p>
+<h2 id="onkeydown"><a href="#onkeydown" class="headerlink" title="onkeydown()"></a>onkeydown()</h2><p>官方文档对该方法的解释是，如果activity中的view有自己的<code>onkeydown()</code>方法，那么就不会调用我们写在activity中的方法。只有都是默认的，才会调用此方法。这里菜主上面方法中的代码移到<code>onkeydown()</code>事件中去，也打出log进行观察了一番，确实如此。<br>我们发现第二次退出的时候直接调用<code>onkeydown()</code>就退出了，并没有再继续执行<code>dispatchTouchEvent()</code>中的方法。</p>
+<h2 id="总结和分析"><a href="#总结和分析" class="headerlink" title="总结和分析"></a>总结和分析</h2><p>菜主把代码又重新运行了一遍，发现问题神奇的没有了。菜主被玩的稀里糊涂的，没办法，逼着自己看源码咯。这边先记一下这个问题。</p>
 <hr>
-<p>#参考资料：<br>这里的资料关于一些事件传递的解释还有我看的关于<code>onkeydown()</code>之类方法的一个解释</p>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p>这里的资料关于一些事件传递的解释还有我看的关于<code>onkeydown()</code>之类方法的一个解释</p>
 <blockquote>
 <p> <a href="http://stackoverflow.com/questions/7846050/difference-between-onkey-onkeydown-and-dispatchkeyevent-methods-provided" target="_blank" rel="external">difference between onkey onkeydown and dispatchkeyevent methods</a>(在著名问答网站上的一个回答，简洁的说明了onkey(),onkeydown()以及dispatchkeyevent()的简单流程)</p>
 <p><a href="http://blog.csdn.net/cwuhao/article/details/6891220" target="_blank" rel="external"> 关于Android按键处理</a>(这篇文章中也没讲多细，只是用代码演示一遍事件分发的一个工程)  </p>
