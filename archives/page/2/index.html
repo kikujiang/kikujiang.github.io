@@ -151,28 +151,81 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2015/03/06/android-notes-150306/" title="link to post.title">Android的笔记积累(五)</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2014/11/28/android-notes-141128/" title="link to post.title">Android的笔记积累(二)</a></h2>
       <p class="excerpt">
     
       前言
-大家好，先祝大家新的一年万事如此，工资爱情节节高。昨天是我国传统的元宵节，相信大家肯定也都有自己的特别回忆吧。近两个月都没有怎么写博客，太松懈了。狠狠地批评自己一下。上班也已经一周多了，又有不少问题值得菜主记录下来，以便以后自己的开发中会用到。
+大家好，菜主又回来了。这两周项目忙着上线，有点小忙。这两天抽空看了stormzhang大神分享的一些文章，也开始慢慢着手进行Android studio这款开发软件的学习。毕竟，好的东西也还是要多多学习的。不说废话了，记录一下这周的遇到一些有帮助的东西。
+
 正文
 
-先要来说说的就是我们在开发中需要处理线程的线程管理问题。拜读Java(Android)线程池。这篇文章主要讲解了我们开发工程中，对多线程的一个优化方法。小菜看了也只是照马画驴，简单的用到我们开发的活动中。
-
-结尾
-菜主这段时间的工作主要负责
+首先先来讲讲看到的一个缓存工具类ASimpleCache,我们一般开发Android程序，对缓存的用到还是很多的。之前项目中确实也用到的是SharePreference。配置的时候确实只是配置了一些基本类型的数据。看了这个开源工
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2015-03-06T00:54:16.000Z" class="post-list__meta--date date">2015-03-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+      <div class="post-list__meta"><time datetime="2014-11-28T09:28:51.000Z" class="post-list__meta--date date">2014-11-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Notes/">Notes</a>
-</span><a class="btn-border-small" href="/2015/03/06/android-notes-150306/">继续阅读</a></div>
+</span><a class="btn-border-small" href="/2014/11/28/android-notes-141128/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2014/11/20/lifenotes-141120/" title="link to post.title">那些事，那些人(一)</a></h2>
+      <p class="excerpt">
+    
+      前言
+11月20日，每天都会有各种各样的事情发生。我不是一个容易坚持的人，但是总归有想法这个出发点总归是好的，坚持在于每一天的督促和自觉。现在的自己紧跟着时代的潮流，特别是在浮躁这个方面。基本上每过一小段时间都会出现一些很浮躁的情绪，自己一些坚持好的习惯都会受到影响。
+正文
+可能因为自己是搞技术的，基本上的生活就是两点:公司和租的房子。语言能力也是极其有限。所以就随便写写了，发现微信的公共号确实是个挺不错的功能，方便了许多的懒于做自己app的大小团体。本人的也有个微信公众号，但是当时因为有不少的
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2014-11-19T16:00:00.000Z" class="post-list__meta--date date">2014-11-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/生活随笔/">生活随笔</a>
+</span><a class="btn-border-small" href="/2014/11/20/lifenotes-141120/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2014/11/18/android-notes-141118/" title="link to post.title">Android的笔记积累(一)</a></h2>
+      <p class="excerpt">
+    
+      正文
+这个系列用来记录工作中遇到的一些问题和解决方案。今天遇到个问题，问题是这样的:现在我们的应用要采用两次退出程序的方法。本来这不是什么大问题的，但是有点菜主没有注意到。就是我们项目中还是用到以前的activitygroup里面放tabhost。还是先看activity中的用法，基本上现在都是这么做的。
+1234567891011121314@Overridepublic boolean onKeyDown(int keyCode, KeyEvent event) &amp;#123;if (keyC
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2014-11-18T09:09:09.000Z" class="post-list__meta--date date">2014-11-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Notes/">Notes</a>
+</span><a class="btn-border-small" href="/2014/11/18/android-notes-141118/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2014/10/30/android-database-litepal-141030/" title="link to post.title">LitePal框架学习</a></h2>
+      <p class="excerpt">
+    
+      前言
+前段日子，从郭神的博客上看到了一个很不错的数据库框架。去github上仔细的瞧了一番，该框架采用了ORM模式，发现这个配置文件直接使用到实体类中的方法，比起Google官网给出的确实方便了许多。具体关于一些基本数据库的方法操作，官网的一些方法说明也着实的详细。写了个简单的数据库小例子，就是把增删改查做了一些简单的处理。简单的列一下数据库的操作方法。主要用到的就是SQLiteDatabase、ContentValues和Cursor这三个类处理相关的数据操作。依菜主的理解，Litepal这个
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2014-10-30T09:27:07.000Z" class="post-list__meta--date date">2014-10-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Database/">Database</a>
+</span><a class="btn-border-small" href="/2014/10/30/android-database-litepal-141030/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
+
+  <nav class="pagination" role="navigation">
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">Prev</a>
+    
+    
+  </nav>
 
 
 </div>
