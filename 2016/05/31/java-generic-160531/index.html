@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>浅析java中的泛型 | Dream Maker</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="对Java编程中泛型的知识进行整理">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="浅析java中的泛型 | Dream Maker">
+    <meta name="twitter:description" content="对Java编程中泛型的知识进行整理">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="浅析java中的泛型 | Dream Maker">
+    <meta property="og:description" content="对Java编程中泛型的知识进行整理">
+
+    
+    <meta name="author" content="kikujiang">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Dream Maker" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://kikujiang.github.io/2016/05/31/java-generic-160531/"/>
+
+    
+    <link rel="author" href="https://plus.google.com/u/0/"/>
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Dream Maker 的主页"><img src="/images/logo2.jpg" width="80" alt="Dream Maker logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Dream Maker">Dream Maker</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">因上努力，果上随缘</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">热爱自然，喜欢动物，渴望旅行，积攒幸福的宅男</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+            
+              <li class="navigation__item"><a href="/archives">Blogs</a></li>
+            
+              <li class="navigation__item"><a href="/about">About</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/wb981933877" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/kikujiang" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+  <li class="navigation__item">
+    <a href="https://plus.google.com/u/0/" title="Google+" target="_blank">
+      <i class='social fa fa-google-plus-square'></i>
+      <span class="label">Google+</span>
+    </a>
+  </li>
+
+
+<!-- Facebook -->
+
+  <li class="navigation__item">
+    <a href="https://www.facebook.com/wu.pow.5" title="上Facebook找我" target="_blank">
+      <i class='social fa fa-facebook'></i>
+      <span class="label">Facebook</span>
+    </a>
+  </li>
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-05-31T14:59:42.000Z" class="post-list__meta--date date">2016-05-31</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Notes/">Notes</a>
+</span>
+    </div>
+    <h1 class="post-title">浅析java中的泛型</h1>
+  </header>
+
+  <section class="post">
+    <p>随着越来越多的”轮子”和新的开发理念的出现，我们在研究源码时必不可少的对泛型的接触越来越多。泛型的好处就是在编译的时候会检查类型安全，而且类型的转换过程都是自动和隐式的，能够提高代码的重用率。还记得最先接触泛型就是场景<code>List&lt;String&gt;</code>这种方式。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>好了，言归正传，什么泛型?通俗的来说，就是参数化类型。官方给出的解释如下:<code>A generic type is a generic class or interface that is parameterized over types.</code>,因为这是<code>JDK1.5</code>之后才有的新特性。</p>
+<blockquote>
+<p>在此之前的版本中，Java中都是通过基类Object来实现泛型的效果。</p>
+</blockquote>
+<p>泛型可以用于变量类型，类，接口，方法以及甚至是构造器重，可以说是”无所不能”。</p>
+<h2 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h2><p>说到泛型的参数类型，它的命名规则就是单个并且大写的英文字母。想必大家记得最多的应该就是<code>T</code>吧。它代表类型的含义，其实它还有几个”兄弟”:</p>
+<ul>
+<li>E 表示元素，主要用于<code>Java</code>中集合的使用，比如<code>List</code>、<code>Iterator</code>等等</li>
+<li>K 表示键，主要用于键值对中键的类型</li>
+<li>V 表示值，主要用于键值对中值得类型</li>
+<li>N 表示数值类型，这个用的比较少</li>
+<li>T 表示类型，主要用于表示参数类型</li>
+<li>S,U,V 等等，主要用于多个参数的表示</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>对泛型有个简单的了解之后，我们来看看如何使用吧。下面的例子可以更好的帮助我们理解泛型的用途。如果我们接收到服务器的数据格式为:</p>
+<pre><code>{&quot;code&quot;: 0,&quot;message&quot;: &quot;成功&quot;,&quot;data&quot;: {...}}
+</code></pre><p>当我们无法确定<code>data</code>类型的时候，我们就可以活用泛型。看下我们的代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseData</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line">    <span class="keyword">private</span>  T data;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span><span class="params">(<span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>是不是感觉so easy？稍微回味下，我们继续，假设我们需要在一个工具类<code>HttpUtil</code>写一个方法需要取出上面Json字符串中的data值，那么就可以这么写:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getData</span><span class="params">(ResponseData&lt;?&gt; responseData)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> responseData.getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里出现了个从来没出现过的符号<code>?</code>，这个符号是泛型中的通配符，取出的值可以适用于<code>ResponseData&lt;String&gt;</code>,<code>ResponseData&lt;Integer&gt;</code>或者<code>ResponseData&lt;Response&gt;</code>等等。通配符的好处就是可以将泛型的范围进行进一步的精确。而且，神奇的是，通配符可以选择父类，或者子类。先看下图:<br><img src="http://7pulyj.com1.z0.glb.clouddn.com/generic_wildcards.png" alt=""></p>
+<p>在上述的图中各个类的关系应该可以一目了然。如果我们只需要用到<code>HttpResponse</code>的子类，就会有下面两种写法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getData</span><span class="params">(ResponseData&lt;? extends HttpResponse&gt; responseData)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> responseData.getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>和<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getData</span><span class="params">(ResponseData&lt;HttpResponse&gt; responseData)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> responseData.getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很明显，第一种的写法更讲究逼格。而如果只需要用到父类<code>Response</code>，那么泛型的作用就能体现出来:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getData</span><span class="params">(ResponseData&lt;? <span class="keyword">super</span> HttpResponse&gt; responseData)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> responseData.getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通配符就到这里，下面我们从例子中走出来，看看java源码中泛型的使用。首先来说说上面说到的<code>List</code>。关于<code>List</code>这个家伙，相信只要做过java开发的肯定不会陌生吧。<code>E</code>一般用于操作集合的对象中，来看代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Collection</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E object)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里把源码进行了提取，主要针对于用到泛型的部分。这两个方法分别是添加一个对象，返回一个对象的集合。<br>可以看出，当用到集合相关对象时，通常使用<code>E</code>来作为泛型使用的参数。</p>
+<p>最后我们来看一下<code>K</code>和<code>V</code>的使用场景。还是老规矩，先看代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderedPair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> K key;</span><br><span class="line">    <span class="keyword">private</span> V value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OrderedPair</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.key = key;</span><br><span class="line">	<span class="keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span>	</span>&#123; <span class="keyword">return</span> key; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码很简单，就是一个实现泛型接口<code>Pair</code>的泛型类<code>OrderedPair</code>。如果我们调用<code>OrderedPair</code>类，使用下面的代码就可以了:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;String, Integer&gt; p1 = <span class="keyword">new</span> OrderedPair&lt;String, Integer&gt;(<span class="string">"Even"</span>, <span class="number">8</span>);</span><br><span class="line">Pair&lt;String, String&gt;  p2 = <span class="keyword">new</span> OrderedPair&lt;String, String&gt;(<span class="string">"hello"</span>, <span class="string">"world"</span>);</span><br></pre></td></tr></table></figure></p>
+<p><code>K</code>和<code>V</code>可以换成任意的对象。跟<code>HashMap</code>里面中的代码有点类似。还有一点，相信大家也都注意到了，在<code>JDK1.7</code>以及之后的版本中，我们在使用泛型的时候后面的参数类型是可以忽略的。如下面的代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JDK1.7之前的版本使用泛型</span></span><br><span class="line">List&lt;String&gt; dataList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">//JDK1.7以及之后版本使用泛型</span></span><br><span class="line">List&lt;String&gt; dataList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure></p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>对于泛型介绍的内容就是这么多，有兴趣的朋友还可以参考下方的文档。泛型使用还是很普遍的的，大家在编程中也可以择优选择。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/generics/types.html" title="https://docs.oracle.com/javase/tutorial/java/generics/types.html" target="_blank" rel="external">https://docs.oracle.com/javase/tutorial/java/generics/types.html</a></li>
+<li><a href="http://blog.csdn.net/lonelyroamer/article/details/7864531" title="http://blog.csdn.net/lonelyroamer/article/details/7864531" target="_blank" rel="external">http://blog.csdn.net/lonelyroamer/article/details/7864531</a></li>
+</ul>
+
+  </section>
+
+</article>
+
+
+<section class="post-comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="http://kikujiang.github.io/2016/05/31/java-generic-160531/" data-title="浅析java中的泛型" data-url="http://kikujiang.github.io/2016/05/31/java-generic-160531/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"kikujiang"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-55690406-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>

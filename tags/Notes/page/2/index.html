@@ -160,71 +160,30 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/05/31/java-generic-160531/" title="link to post.title">浅析java中的泛型</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2014/11/18/android-notes-141118/" title="link to post.title">Android的笔记积累(一)</a></h2>
       <p class="excerpt">
     
-      随着越来越多的”轮子”和新的开发理念的出现，我们在研究源码时必不可少的对泛型的接触越来越多。泛型的好处就是在编译的时候会检查类型安全，而且类型的转换过程都是自动和隐式的，能够提高代码的重用率。还记得最先接触泛型就是场景List&amp;lt;String&amp;gt;这种方式。
-定义好了，言归正传，什么泛型?通俗的来说，就是参数化类型。官方给出的解释如下:A generic type is a generic class or interface that is parameterized over type
+      正文
+这个系列用来记录工作中遇到的一些问题和解决方案。今天遇到个问题，问题是这样的:现在我们的应用要采用两次退出程序的方法。本来这不是什么大问题的，但是有点菜主没有注意到。就是我们项目中还是用到以前的activitygroup里面放tabhost。还是先看activity中的用法，基本上现在都是这么做的。
+1234567891011121314@Overridepublic boolean onKeyDown(int keyCode, KeyEvent event) &amp;#123;if (keyC
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-05-31T14:59:42.000Z" class="post-list__meta--date date">2016-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Notes/">Notes</a>
-</span><a class="btn-border-small" href="/2016/05/31/java-generic-160531/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/05/12/android-notes-160512/" title="link to post.title">浅析WAKE_LOCK,让Android保持&quot;活力&quot;</a></h2>
-      <p class="excerpt">
-    
-      前言
-好久没有捣鼓自己博客了，最近可能求知欲比较浓烈些。估计是被“郭神”的光环所引导的。嘿嘿！废话不多说了，咱们进入今天的主题，因为之前在看DownloadManager源码的时候，看到核心下载模块的时候使用了WakeLock这个类。抱着好奇的心态稍微了去了解下，一下子发现了不少有用的知识。相关的资料可以参考:http://developer.android.com/training/scheduling/wakelock.html
-FLAG_KEEP_SCREEN_ON
-正如上面所说的，有些场
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-05-12T13:58:07.000Z" class="post-list__meta--date date">2016-05-12</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+      <div class="post-list__meta"><time datetime="2014-11-18T09:09:09.000Z" class="post-list__meta--date date">2014-11-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Notes/">Notes</a>
-</span><a class="btn-border-small" href="/2016/05/12/android-notes-160512/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/05/07/android-test-junit-160508/" title="link to post.title">Android测试之旅（二）</a></h2>
-      <p class="excerpt">
-    
-      开始
-通过Android测试之旅之JUnit(一)的学习，我们对JUnit的知识有了初步的认识。聪明的你是不是发现其实并没有你想象的那么难呢？这章我们继续来瞅瞅JUnit还有什么好玩的。今天我们用一个简单的例子给大家进行展示，方便更好的理解。
-Parameterized
-我们先来看下面一个待测试类PrettyTest:1234567891011public class PrettyTest &amp;#123;	/**     * 根据输入值的大小返回字符串     * @param a 输入值    
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-05-07T12:11:03.000Z" class="post-list__meta--date date">2016-05-07</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Android测试之旅/">Android测试之旅</a>, <a class="tag-link" href="/tags/JUnit/">JUnit</a>
-</span><a class="btn-border-small" href="/2016/05/07/android-test-junit-160508/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/05/07/android-test-junit-160507/" title="link to post.title">Android测试之旅（一）</a></h2>
-      <p class="excerpt">
-    
-      引言
-随着移动互联网的发展，越来越多的开发者投入到了Android的开发怀抱中。日益增多的app晃得我们眼花缭乱。各种无法预料的崩溃让开发者投入到一天又一天无奈而又漫长的加班中。最近公司让我研究Android测试相关方面的内容，之前待过的一些公司基本都是快速开发，没有什么时间让你来搞测试这块的内容，自己虽然一直很感兴趣，但是始终没有去做过一些深入的了解和调研，正好趁着这次机会，好好的整理整理。Android应用层和我们接触最多的还是java语言，说到java语言，我们就不得不提到JUnit测试框
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-05-06T16:08:14.000Z" class="post-list__meta--date date">2016-05-07</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Android测试之旅/">Android测试之旅</a>, <a class="tag-link" href="/tags/JUnit/">JUnit</a>
-</span><a class="btn-border-small" href="/2016/05/07/android-test-junit-160507/">继续阅读</a></div>
+</span><a class="btn-border-small" href="/2014/11/18/android-notes-141118/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
+
+  <nav class="pagination" role="navigation">
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">Prev</a>
+    
+    
+  </nav>
 
 
 </div>
